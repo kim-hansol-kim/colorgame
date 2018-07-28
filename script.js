@@ -28,6 +28,10 @@ var answer_display = document.getElementById("color_display");
 var gameover = false;
 var newgame = document.getElementById("newgame");
 
+answer_display.textContent = answer.toUpperCase();
+
+var p = document.querySelector("p");
+
 for (i = 0; i < squares.length; i++) {
   squares[i].style.backgroundColor = options[i];
 
@@ -36,7 +40,7 @@ for (i = 0; i < squares.length; i++) {
       if (this.style.backgroundColor === answer) {
         console.log("correct")
         gameover = true;
-        answer_display.textContent = answer.toUpperCase();
+        p.textContent = "CORRECT!";
         newgame.textContent = "Play again?"
         for (i = 0; i < squares.length; i++) {
           squares[i].style.backgroundColor = answer;
@@ -44,7 +48,8 @@ for (i = 0; i < squares.length; i++) {
         }
       } else {
         console.log("incorrect")
-        this.classList.add("eliminate")
+        this.classList.add("eliminate");
+        p.textContent = "INCORRECT";
       }
     }
   });
@@ -54,6 +59,8 @@ for (i = 0; i < squares.length; i++) {
 newgame.addEventListener("click", function() {
   gameover = false;
   newgame.textContent = "New Colors";
+  p.textContent = ' ';
+
 
   for (i = 0; i < 3; i++) {
     rgbanswer[i] = Math.floor(Math.random() * 255);
@@ -78,6 +85,6 @@ newgame.addEventListener("click", function() {
     squares[i].style.backgroundColor = options[i];
     squares[i].classList.remove("eliminate");
   }
-  answer_display.textContent = "RGB"
+  answer_display.textContent = answer.toUpperCase();
 
 });

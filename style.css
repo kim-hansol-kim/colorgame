@@ -27,3 +27,8 @@ h1 {
 #newgame{
   color: white;
 }
+
+p {
+  color: white;
+  white-space: pre-wrap;
+}
